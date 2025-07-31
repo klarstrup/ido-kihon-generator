@@ -10,10 +10,8 @@ import {
   Turn,
 } from "./types";
 
-const sample = <A extends unknown>(array: A[]): A => {
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
-};
+const sample = <A extends unknown>(array: A[]): A =>
+  array[Math.floor(Math.random() * array.length)];
 
 const getMovements = (maxKyu?: Kyu): Movement[] =>
   kihon.filter(
@@ -48,6 +46,7 @@ const getRandomCycle = (maxKyu?: Kyu, maxComplexity: number = 5): Cycle => {
     const previousStep = steps[steps.length - 1];
     if (
       previousStep.type != "stance" &&
+      // Is a stance allowed to be the last step?
       i < additionalStepsCount - 1 &&
       Math.random() < 0.9
     ) {
@@ -76,18 +75,14 @@ const getRandomIdoKihon = (maxKyu?: Kyu, maxComplexity: number = 5) => {
   return [turn, module, turn, module, turn] satisfies IdoKihon;
 };
 
-const formatTurn = (turn: Turn): string =>
-  `🔀 ${turn[0].name}: ${turn[1].name}.`;
+const formatTurn = ([stance, block]: Turn): string =>
+  `🔀 ${stance.name}: ${block.name}.`;
 const formatCycle = (cycle: Cycle): string =>
   "🔄 " +
   cycle
     .map((step, index) => {
       const previousStep = cycle[index - 1];
       if (!previousStep) return step.name;
-
-      if (step.type === "stance" && previousStep.type === "stance") {
-        throw new Error("Two stances in a row are not allowed.");
-      }
 
       if (previousStep.type === "stance") {
         return `: ${step.name}`;
