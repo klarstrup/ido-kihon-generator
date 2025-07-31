@@ -16,15 +16,15 @@ const sample = <A extends unknown>(array: A[]): A =>
 
 const getMovements = (maxKyu?: Kyu): Movement[] =>
   kihon.filter(
-    (move) => move.type !== KihonType.Stance && (!maxKyu || move.kyu <= maxKyu)
+    (move) => move.type !== KihonType.Stance && (!maxKyu || move.kyu >= maxKyu)
   ) as Movement[];
 const getStances = (maxKyu?: Kyu) =>
   kihon.filter(
-    (move) => move.type === KihonType.Stance && (!maxKyu || move.kyu <= maxKyu)
+    (move) => move.type === KihonType.Stance && (!maxKyu || move.kyu >= maxKyu)
   ) as Stance[];
 const getBlocks = (maxKyu?: Kyu): Block[] =>
   kihon.filter(
-    (move) => move.type === KihonType.Block && (!maxKyu || move.kyu <= maxKyu)
+    (move) => move.type === KihonType.Block && (!maxKyu || move.kyu >= maxKyu)
   ) as Block[];
 
 const getRandomMovement = (maxKyu?: Kyu): Movement =>
@@ -82,22 +82,24 @@ const formatCycle = (cycle: Cycle): string =>
   "🔄 " +
   cycle
     .map((step, index) => {
+      const name = step.name;
+
       const previousStep = cycle[index - 1];
-      if (!previousStep) return step.name;
+      if (!previousStep) return name;
 
       if (previousStep.type === KihonType.Stance) {
-        return `: ${step.name}`;
+        return `: ${name}`;
       }
       if (step.type === KihonType.Stance) {
-        return `. ${step.name}`;
+        return `. ${name}`;
       }
 
-      return ` => ${step.name}`;
+      return ` => ${name}`;
     })
     .join("") +
   ".";
 
-const formatIdoKihon = (idoKihon: IdoKihon): string =>
+export const formatIdoKihonVerbose = (idoKihon: IdoKihon): string =>
   idoKihon
     .map((turnModule) => {
       if (turnModule.length === 2) return formatTurn(turnModule);
@@ -108,11 +110,24 @@ const formatIdoKihon = (idoKihon: IdoKihon): string =>
     })
     .join("\n");
 
-const formatIdoKihonBrief = (idoKihon: IdoKihon): string =>
+export const formatIdoKihonBrief = (idoKihon: IdoKihon): string =>
   `${formatTurn(idoKihon[0])}\n${formatCycle(idoKihon[1][0])}`;
 
+const getHighestKyu = (idoKihon: IdoKihon): Kyu => {
+  const turnKyu = (idoKihon[0] as Turn).reduce(
+    (max, step) => Math.min(max, step.kyu) as Kyu,
+    10 as Kyu
+  );
+  const moduleKyu = (idoKihon[1] as Module)[0].reduce(
+    (max, step) => Math.min(max, step.kyu) as Kyu,
+    10 as Kyu
+  );
+  return Math.min(turnKyu, moduleKyu) as Kyu;
+};
+
 const randomIdoKihon = getRandomIdoKihon();
-console.log("Random Ido Kihon:");
+console.log("Random ido kihon:");
 console.log("");
 console.log(formatIdoKihonBrief(randomIdoKihon));
 console.log("");
+console.log("Highest kyu move: " + getHighestKyu(randomIdoKihon));
