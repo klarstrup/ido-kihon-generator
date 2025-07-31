@@ -1,4 +1,4 @@
-import type { Kihon } from "./types";
+import type { Kihon } from "./types.ts";
 
 export const kihon = [
   {

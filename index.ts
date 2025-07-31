@@ -1,5 +1,5 @@
-import { kihon } from "./kihon";
-import {
+import { kihon } from "./kihon.ts";
+import type {
   Block,
   Cycle,
   IdoKihon,
@@ -8,7 +8,7 @@ import {
   Movement,
   Stance,
   Turn,
-} from "./types";
+} from "./types.ts";
 
 const sample = <A extends unknown>(array: A[]): A =>
   array[Math.floor(Math.random() * array.length)];
