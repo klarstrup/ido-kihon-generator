@@ -475,4 +475,4 @@ export const kihon = [
     name: "Moro ashi dachi",
     danishName: "Forskudte parallelle fødder",
   },
-] satisfies Kihon[];
+] as Kihon[];

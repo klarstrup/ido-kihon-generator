@@ -1,29 +1,36 @@
 export type Kyu = 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1;
 
+export enum KihonType {
+  Kick = "kick",
+  Strike = "strike",
+  Block = "block",
+  Stance = "stance",
+}
+
 export interface KihonBase {
   kyu: Kyu;
-  type: "kick" | "strike" | "block" | "stance";
+  type: KihonType;
   name: string;
   danishName: string;
 }
 
 export interface Kick extends KihonBase {
-  type: "kick";
+  type: KihonType.Kick;
   ura?: boolean;
 }
 export interface Strike extends KihonBase {
-  type: "strike";
+  type: KihonType.Strike;
   ura?: boolean;
 }
 export interface Block extends KihonBase {
-  type: "block";
+  type: KihonType.Block;
   ura?: boolean;
 }
 
 export type Movement = Kick | Strike | Block;
 
 export interface Stance extends KihonBase {
-  type: "stance";
+  type: KihonType.Stance;
   angle?: 0 | 45 | 90 | 180;
 }
 

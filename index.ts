@@ -1,13 +1,14 @@
 import { kihon } from "./kihon.ts";
-import type {
-  Block,
-  Cycle,
-  IdoKihon,
-  Kyu,
-  Module,
-  Movement,
-  Stance,
-  Turn,
+import {
+  KihonType,
+  type Block,
+  type Cycle,
+  type IdoKihon,
+  type Kyu,
+  type Module,
+  type Movement,
+  type Stance,
+  type Turn,
 } from "./types.ts";
 
 const sample = <A extends unknown>(array: A[]): A =>
@@ -15,15 +16,15 @@ const sample = <A extends unknown>(array: A[]): A =>
 
 const getMovements = (maxKyu?: Kyu): Movement[] =>
   kihon.filter(
-    (move) => move.type !== "stance" && (!maxKyu || move.kyu <= maxKyu)
+    (move) => move.type !== KihonType.Stance && (!maxKyu || move.kyu <= maxKyu)
   ) as Movement[];
 const getStances = (maxKyu?: Kyu) =>
   kihon.filter(
-    (move) => move.type === "stance" && (!maxKyu || move.kyu <= maxKyu)
+    (move) => move.type === KihonType.Stance && (!maxKyu || move.kyu <= maxKyu)
   ) as Stance[];
 const getBlocks = (maxKyu?: Kyu): Block[] =>
   kihon.filter(
-    (move) => move.type === "block" && (!maxKyu || move.kyu <= maxKyu)
+    (move) => move.type === KihonType.Block && (!maxKyu || move.kyu <= maxKyu)
   ) as Block[];
 
 const getRandomMovement = (maxKyu?: Kyu): Movement =>
@@ -45,7 +46,7 @@ const getRandomCycle = (maxKyu?: Kyu, maxComplexity: number = 5): Cycle => {
   for (let i = 0; i < additionalStepsCount; i++) {
     const previousStep = steps[steps.length - 1];
     if (
-      previousStep.type != "stance" &&
+      previousStep.type != KihonType.Stance &&
       // Is a stance allowed to be the last step?
       i < additionalStepsCount - 1 &&
       Math.random() < 0.9
@@ -84,10 +85,10 @@ const formatCycle = (cycle: Cycle): string =>
       const previousStep = cycle[index - 1];
       if (!previousStep) return step.name;
 
-      if (previousStep.type === "stance") {
+      if (previousStep.type === KihonType.Stance) {
         return `: ${step.name}`;
       }
-      if (step.type === "stance") {
+      if (step.type === KihonType.Stance) {
         return `. ${step.name}`;
       }
 
