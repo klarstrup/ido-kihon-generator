@@ -45,16 +45,19 @@ const getRandomCycle = (maxKyu?: Kyu, maxComplexity: number = 5): Cycle => {
   );
   for (let i = 0; i < additionalStepsCount; i++) {
     const previousStep = steps[steps.length - 1];
+
+    let nextStep: Stance | Movement;
     if (
       previousStep.type != KihonType.Stance &&
-      // Is a stance allowed to be the last step?
       i < additionalStepsCount - 1 &&
-      Math.random() < 0.9
+      Math.random() < 0.5
     ) {
-      steps.push(getRandomStance(maxKyu));
+      nextStep = getRandomStance(maxKyu);
     } else {
-      steps.push(getRandomMovement(maxKyu));
+      nextStep = getRandomMovement(maxKyu);
     }
+
+    steps.push(nextStep);
   }
 
   return steps as Cycle;
