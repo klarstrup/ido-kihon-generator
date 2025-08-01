@@ -390,6 +390,7 @@ export const kihon = [
     type: "stance",
     name: "Fudo dachi",
     danishName: "Normal stilling",
+    curriculumOnly: true,
   },
   {
     kyu: 10,
@@ -402,18 +403,21 @@ export const kihon = [
     type: "stance",
     name: "Heiko dachi",
     danishName: "Stilling med parallelle fødder",
+    curriculumOnly: true,
   },
   {
     kyu: 10,
     type: "stance",
     name: "Uchi hachi-ji dachi",
     danishName: "Stilling med indadrettede fødder",
+    curriculumOnly: true,
   },
   {
     kyu: 10,
     type: "stance",
     name: "Yoi dachi",
     danishName: "Klar stilling",
+    curriculumOnly: true,
   },
   {
     kyu: 10,
@@ -456,12 +460,14 @@ export const kihon = [
     type: "stance",
     name: "Tsuru ashi dachi",
     danishName: "Stilling på et ben",
+    curriculumOnly: true,
   },
   {
     kyu: 6,
     type: "stance",
     name: "Heisoku dachi",
     danishName: "Stilling med samlede fødder",
+    curriculumOnly: true,
   },
   {
     kyu: 5,

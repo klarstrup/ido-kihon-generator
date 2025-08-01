@@ -12,6 +12,7 @@ export interface KihonBase {
   type: KihonType;
   name: string;
   danishName: string;
+  curriculumOnly?: boolean;
 }
 
 export interface Kick extends KihonBase {

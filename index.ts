@@ -20,7 +20,10 @@ const getMovements = (maxKyu?: Kyu): Movement[] =>
   ) as Movement[];
 const getStances = (maxKyu?: Kyu) =>
   kihon.filter(
-    (move) => move.type === KihonType.Stance && (!maxKyu || move.kyu >= maxKyu)
+    (move) =>
+      move.type === KihonType.Stance &&
+      !move.curriculumOnly &&
+      (!maxKyu || move.kyu >= maxKyu)
   ) as Stance[];
 const getBlocks = (maxKyu?: Kyu): Block[] =>
   kihon.filter(
