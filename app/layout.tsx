@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export const metadata = {
   title: "Ido Kihon Generator",
-  description: "Generate Ido Kihon sequences randomly, for fun and practice.",
+  description: "Generate totally random Ido Kihon sequences, for fun and practice.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
