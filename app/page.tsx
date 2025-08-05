@@ -6,6 +6,7 @@ import {
   type Movement,
   type Stance,
 } from "../types";
+import { SaveKihonAsImage } from "./SaveKihonAsImage";
 
 function VisualKihons({ kihons }: { kihons: Kihon[] }) {
   let stances: { stance: Stance; length: number }[] = [];
@@ -114,6 +115,7 @@ export default async function Page({
           gap: "0.5em",
           background: "rgb(200, 200, 200)",
         }}
+        id="kihon-display"
       >
         {randomIdoKihon.map((turnOrModule, i) => {
           if (turnOrModule.length === 2) {
@@ -128,6 +130,9 @@ export default async function Page({
       </div>
       <br />
       Highest kyu move: <b>{highestKyu} kyu</b>
+      <br />
+      <br />
+      <SaveKihonAsImage />
     </code>
   );
 }
