@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/react": "^19.1.9",
+    "html2canvas": "^1.4.1",
+    "next": "^15.4.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.2.0",
+    "typescript": "5.9.2"
+  }
+}
