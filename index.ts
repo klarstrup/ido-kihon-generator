@@ -68,8 +68,14 @@ const getRandomCycle = (maxKyu?: Kyu, maxComplexity: number = 5): Cycle => {
 
 const getRandomModule = (maxKyu?: Kyu, maxComplexity: number = 5) => {
   const cycle = getRandomCycle(maxKyu, maxComplexity);
+  //cycle variation: each cycle changes. retains at least one preceeding stance/movement.
+  //cycle variation: middle cycle varies in length from the other two.
 
-  return [cycle, cycle, cycle] satisfies Module;
+  return [
+    getRandomCycle(maxKyu, maxComplexity),
+    getRandomCycle(maxKyu, maxComplexity),
+    getRandomCycle(maxKyu, maxComplexity),
+  ] satisfies Module;
 };
 
 const getRandomTurn = (maxKyu?: Kyu) =>
@@ -134,6 +140,6 @@ const getHighestKyu = (idoKihon: IdoKihon): Kyu => {
 const randomIdoKihon = getRandomIdoKihon();
 console.log("Random ido kihon:");
 console.log("");
-console.log(formatIdoKihonBrief(randomIdoKihon));
+console.log(formatIdoKihonVerbose(randomIdoKihon));
 console.log("");
 console.log("Highest kyu move: " + getHighestKyu(randomIdoKihon));
