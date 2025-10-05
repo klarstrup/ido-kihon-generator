@@ -69,7 +69,21 @@ const getRandomCycle = (maxKyu?: Kyu, maxComplexity: number = 5): Cycle => {
 const getRandomModule = (maxKyu?: Kyu, maxComplexity: number = 5) => {
   const cycle = getRandomCycle(maxKyu, maxComplexity);
 
-  return [cycle, cycle, cycle] satisfies Module;
+  return [
+    cycle,
+    cycle
+      .filter((_, i) => (i === 0 ? true : Math.random() > 0.2))
+      .map((tech) => {
+        if (Math.random() < 0.3) {
+          return sample(
+            kihon.filter((k) => !k.curriculumOnly && k.type === tech.type)
+          );
+        }
+
+        return tech;
+      }) as Cycle,
+    cycle,
+  ] satisfies Module;
 };
 
 const getRandomTurn = (maxKyu?: Kyu) =>
