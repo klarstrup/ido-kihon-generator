@@ -89,7 +89,7 @@ const getRandomModule = (maxKyu?: Kyu, maxComplexity: number = 5) => {
 const getRandomTurn = (maxKyu?: Kyu) =>
   [getRandomStance(maxKyu), getRandomBlock(maxKyu)] satisfies Turn;
 
-export const getRandomIdoKihon = (maxKyu?: Kyu, maxComplexity: number = 5) => {
+export const getRandomIdoKihon = (maxKyu?: Kyu, maxComplexity: number = 4) => {
   const turn = getRandomTurn(maxKyu);
   const module = getRandomModule(maxKyu, maxComplexity);
 
