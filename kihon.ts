@@ -162,6 +162,8 @@ export const kihon = [
     type: "kick",
     name: "Chudan mae geri",
     danishName: "Front spark i maven",
+    direction: "mae",
+    target: "chudan",
   },
   {
     kyu: 9,
@@ -454,6 +456,7 @@ export const kihon = [
     type: "stance",
     name: "Musubi dachi",
     danishName: "Stilling med samlede hæle",
+    curriculumOnly: true,
   },
   {
     kyu: 6,

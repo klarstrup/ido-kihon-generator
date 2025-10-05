@@ -15,17 +15,63 @@ export interface KihonBase {
   curriculumOnly?: boolean;
 }
 
+export enum KihonDirection {
+  Mae = "mae",
+  Mawashi = "mawashi",
+  Ushiro = "ushiro",
+  Ago = "ago",
+  Soto = "soto",
+  Uchi = "uchi",
+  Tobi = "tobi",
+  Komi = "komi",
+  Sakutso = "sakutso",
+}
+export enum KihonTarget {
+  Jodan = "jodan",
+  Chodan = "chodan",
+  Gedan = "gedan",
+  Kin = "kin",
+  Hizo = "hizo",
+}
+export enum KihonHandWeapon {
+  Koken = "koken",
+  Shuto = "shuto",
+  Shotei = "shotei",
+  Hiji = "hiji",
+  Tsuki = "tsuki",
+  Uraken = "uraken",
+}
+export enum KihonFeetWeapon {
+  // Feet
+  Heisoku = "heisoku",
+  Chosoku = "chosuko",
+  Sokuto = "sokuto",
+  Teisoku = "teisoku",
+  Kakato = "kakato",
+}
+
+export type KihonWeapon = KihonHandWeapon | KihonFeetWeapon;
+
 export interface Kick extends KihonBase {
   type: KihonType.Kick;
   ura?: boolean;
+  direction?: KihonDirection[];
+  target?: KihonTarget;
+  weapon?: KihonFeetWeapon;
 }
 export interface Strike extends KihonBase {
   type: KihonType.Strike;
   ura?: boolean;
+  direction?: KihonDirection[];
+  target?: KihonTarget;
+  weapon?: KihonHandWeapon;
 }
 export interface Block extends KihonBase {
   type: KihonType.Block;
   ura?: boolean;
+  direction?: KihonDirection[];
+  target?: KihonTarget;
+  weapon?: KihonHandWeapon;
 }
 
 export type Movement = Kick | Strike | Block;
