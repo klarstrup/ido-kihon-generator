@@ -9,7 +9,7 @@ export enum KihonType {
 
 export interface KihonBase {
   kyu: Kyu;
-  type: KihonType;
+  type: `${KihonType}`;
   name: string;
   danishName: string;
   curriculumOnly?: boolean;
@@ -32,7 +32,7 @@ export enum KihonDirection {
 }
 export enum KihonTarget {
   Jodan = "jodan",
-  Chodan = "chodan",
+  Chudan = "chudan",
   Gedan = "gedan",
   Kin = "kin",
   Hizo = "hizo",
@@ -47,7 +47,7 @@ export enum KihonHandWeapon {
 export enum KihonFeetWeapon {
   // Feet
   Heisoku = "heisoku",
-  Chosoku = "chosuko",
+  Chosoku = "chosoku",
   Sokuto = "sokuto",
   Teisoku = "teisoku",
   Kakato = "kakato",
@@ -57,31 +57,31 @@ export enum KihonFeetWeapon {
 export type KihonWeapon = KihonHandWeapon | KihonFeetWeapon;
 
 export interface Kick extends KihonBase {
-  type: KihonType.Kick;
+  type: `${KihonType.Kick}`;
   ura?: boolean;
-  direction?: KihonDirection[];
-  target?: KihonTarget;
-  weapon?: KihonFeetWeapon;
+  direction?: `${KihonDirection}` | `${KihonDirection}`[];
+  target?: `${KihonTarget}` | `${KihonTarget}`[];
+  weapon?: `${KihonFeetWeapon}`;
 }
 export interface Strike extends KihonBase {
-  type: KihonType.Strike;
+  type: `${KihonType.Strike}`;
   ura?: boolean;
-  direction?: KihonDirection[];
-  target?: KihonTarget;
-  weapon?: KihonHandWeapon;
+  direction?: `${KihonDirection}` | `${KihonDirection}`[];
+  target?: `${KihonTarget}` | `${KihonTarget}`[];
+  weapon?: `${KihonHandWeapon}`;
 }
 export interface Block extends KihonBase {
-  type: KihonType.Block;
+  type: `${KihonType.Block}`;
   ura?: boolean;
-  direction?: KihonDirection[];
-  target?: KihonTarget;
-  weapon?: KihonHandWeapon;
+  direction?: `${KihonDirection}` | `${KihonDirection}`[];
+  target?: `${KihonTarget}` | `${KihonTarget}`[];
+  weapon?: `${KihonHandWeapon}`;
 }
 
 export type Movement = Kick | Strike | Block;
 
 export interface Stance extends KihonBase {
-  type: KihonType.Stance;
+  type: `${KihonType.Stance}`;
   angle?: 0 | 45 | 90 | 180;
 }
 

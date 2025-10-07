@@ -242,7 +242,7 @@ export const kihon = [
     danishName: "Front spark i maven",
     direction: "mae",
     target: "chudan",
-    weapon: "chosuko",
+    weapon: "chosoku",
   },
   {
     kyu: 9,
@@ -251,7 +251,7 @@ export const kihon = [
     danishName: "Front spark i hovedet",
     direction: "mae",
     target: "jodan",
-    weapon: "chosuko",
+    weapon: "chosoku",
   },
   {
     kyu: 8,
@@ -287,7 +287,7 @@ export const kihon = [
     danishName: "Strakt fronspark",
     direction: "mae",
     target: "jodan",
-    weapon: "chosuko",
+    weapon: "chosoku",
   },
   {
     kyu: 7,
@@ -385,7 +385,7 @@ export const kihon = [
     danishName: "Flyvende frontspark",
     direction: ["mae", "tobi"],
     target: "jodan",
-    weapon: "chosuko",
+    weapon: "chosoku",
   },
   {
     kyu: 3,
@@ -412,7 +412,7 @@ export const kihon = [
     danishName: "Dobbelt flyvende cirkelspark",
     direction: ["mae", "tobi"],
     target: "jodan",
-    weapon: "chosuko",
+    weapon: "chosoku",
   },
   {
     kyu: 2,
@@ -673,4 +673,4 @@ export const kihon = [
     name: "Moro ashi dachi",
     danishName: "Forskudte parallelle fødder",
   },
-] as Kihon[];
+] satisfies Kihon[];
