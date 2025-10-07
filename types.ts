@@ -19,12 +19,16 @@ export enum KihonDirection {
   Mae = "mae",
   Mawashi = "mawashi",
   Ushiro = "ushiro",
-  Ago = "ago",
+  Age = "age",
   Soto = "soto",
   Uchi = "uchi",
   Tobi = "tobi",
   Komi = "komi",
   Sakutso = "sakutso",
+  Uraken = "uraken",
+  Yoko = "yoko",
+  Keage = "keage",
+  Oroshi = "oroshi",
 }
 export enum KihonTarget {
   Jodan = "jodan",
@@ -39,7 +43,6 @@ export enum KihonHandWeapon {
   Shotei = "shotei",
   Hiji = "hiji",
   Tsuki = "tsuki",
-  Uraken = "uraken",
 }
 export enum KihonFeetWeapon {
   // Feet
@@ -48,6 +51,7 @@ export enum KihonFeetWeapon {
   Sokuto = "sokuto",
   Teisoku = "teisoku",
   Kakato = "kakato",
+  Hiza = "hiza",
 }
 
 export type KihonWeapon = KihonHandWeapon | KihonFeetWeapon;
