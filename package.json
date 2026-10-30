@@ -5,7 +5,7 @@
     "start": "next start",
     "lint": "next lint",
     "ci": "bun run ts",
-    "ts": "bunx --package typescript-7 tsc --noEmit"
+    "ts": "bun check"
   },
   "dependencies": {
     "@types/react": "^19.3.0",
